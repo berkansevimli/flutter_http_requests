@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_api/constants.dart';
 import 'package:flutter_api/screens/users/model/model.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,7 +15,7 @@ class GetUsersScreen extends StatefulWidget {
 }
 
 class _GetUsersScreenState extends State<GetUsersScreen> {
-  final url = Uri.parse('http://50.19.108.143:5000/users/');
+  
   int counter = 0;
   var personalResult;
 
@@ -55,9 +56,9 @@ class _GetUsersScreenState extends State<GetUsersScreen> {
 
   Future fetchUsers() async {
     try {
-      final response = await http.get(url);
+      final response = await http.get(getUserLink);
       if (response.statusCode == 200) {
-        var result = await GetUsers.fromJson(json.decode(response.body));
+        var result = await UserModel.fromJson(json.decode(response.body));
 
         if (mounted) {
           setState(() {
