@@ -49,7 +49,7 @@ class _GetUsersScreenState extends State<GetUsersScreen> {
                   return Container(
                     margin: EdgeInsets.only(bottom: 8, left: 8, right: 8),
                     child: Swipeable(
-                      threshold: 60.0,
+                      threshold: MediaQuery.of(context).size.width * 0.2,
                       onSwipeLeft: () {
                         print("edit");
                       },
