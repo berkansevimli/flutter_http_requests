@@ -95,32 +95,24 @@ class _AddUserState extends State<AddUser> {
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
-                        // Map<String, dynamic> data = {
-                        //   'data': {
-                        //     "username": username,
-                        //     "firstname": "Emre Can",
-                        //     "lastname": "Karataş",
-                        //     "user_type": "admin",
-                        //     "time": DateTime.now().toString(),
-                        //     "email": email,
-                        //     "img": "default",
-                        //     "bio": "I am Emre Can",
-                        //     "phonenumber": "05436256481",
-                        //     "uniid": 1,
-                        //     "uniname": "Özyeğin Üniversitesi",
-                        //     "faculty": "Engineering",
-                        //     "department": "CS",
-                        //     "grade": "Hazırlık",
-                        //     "blocks": {},
-                        //     "uid": username
-                        //   }
-                        // };
                         Map<String, dynamic> data = {
                           'data': {
-                            "uid": username,
-                            "randomKey":
-                                "528f97527e4d45119065c352fd8d93016c4847f1fb1bc68a59fd6bf752cc2b2e",
-                            "devicename": "Iphone 12"
+                            "username": username,
+                            "firstname": "Emre Can",
+                            "lastname": "Karataş",
+                            "user_type": "admin",
+                            "time": DateTime.now().toString(),
+                            "email": email,
+                            "img": "default",
+                            "bio": "I am Emre Can",
+                            "phonenumber": "05436256481",
+                            "uniid": 1,
+                            "uniname": "Özyeğin Üniversitesi",
+                            "faculty": "Engineering",
+                            "department": "CS",
+                            "grade": "Hazırlık",
+                            "blocks": {},
+                            "uid": username
                           }
                         };
 
@@ -129,7 +121,7 @@ class _AddUserState extends State<AddUser> {
                         print(time.hour);
 
                         try {
-                          final response = await http.post(loginPath,
+                          final response = await http.post(addUserLink,
                               headers: <String, String>{
                                 'Content-Type':
                                     'application/json; charset=UTF-8',
@@ -137,8 +129,7 @@ class _AddUserState extends State<AddUser> {
                                     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTY0MzMxNjJ9.LW6PLHA-CicEIBDfOTa165Uy-Dj-hivrM9hlm79xh1A'
                               },
                               body: json.encode(data));
-
-                          print(response.body);
+                              
 
                           if (response.statusCode == 201) {
                             Navigator.pop(context);
